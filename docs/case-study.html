@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>myKaria case study - Oluwatobi Lukan</title>
 <style>
-  @page { size: A4; margin: 12mm 13mm 11mm 13mm; }
+  @page { size: A4; margin: 11mm 13mm 8mm 13mm; }
   * { box-sizing: border-box; }
   body {
     font-family: "Helvetica Neue", Arial, sans-serif;
@@ -18,7 +18,7 @@
   .sub { color: #555; font-size: 9pt; margin-bottom: 5mm; }
   h2 {
     font-size: 9pt; text-transform: uppercase; letter-spacing: 0.4pt;
-    color: #0f4c81; margin: 3.6mm 0 1.4mm 0; padding-bottom: 0.7mm;
+    color: #0f4c81; margin: 3.1mm 0 1.2mm 0; padding-bottom: 0.6mm;
     border-bottom: 0.6pt solid #d5dde5;
   }
   p { margin: 0 0 2mm 0; }
@@ -29,7 +29,10 @@
   .grid { display: block; }
   .grid > div { flex: 1; }
   .kicker { color: #0f4c81; font-weight: 600; }
-  .foot { margin-top: 4mm; padding-top: 2mm; border-top: 0.6pt solid #d5dde5; color: #666; font-size: 8.4pt; }
+  .shot { float: right; width: 62mm; margin: 1mm 0 3mm 5mm; page-break-inside: avoid; }
+  .shot img { width: 100%; height: auto; border: 0.4pt solid #d5dde5; }
+  .shot figcaption { font-size: 7.6pt; line-height: 1.3; color: #56606a; margin-top: 1mm; }
+  .foot { margin-top: 2.5mm; padding-top: 1.5mm; border-top: 0.6pt solid #d5dde5; color: #666; font-size: 8.4pt; }
   .foot a { color: #0f4c81; text-decoration: none; }
   .muted { color: #555; }
 </style>
@@ -74,9 +77,14 @@ requirements with real adjacent experience rather than invention.</p>
   <li>274 test and spec files across the full repository</li>
   <li>Provider-agnostic LLM layer: OpenAI, Anthropic, Ollama, OpenRouter and any OpenAI-compatible endpoint, with retry, fallback and per-call cost resolution</li>
   <li>Multi-tenant mechanics: JWT auth with email verification, tier entitlements, Stripe billing, data isolation, retention and deletion jobs</li>
-  <li>Rendering pipeline: Handlebars templates to HTML to PDF through Puppeteer</li>
   <li>Docker Compose environments, Jenkins pipeline, Nginx-backed deployment</li>
 </ul>
+
+
+<figure class="shot">
+  <img src="../assets/dashboard.jpg" alt="myKaria application dashboard">
+  <figcaption>Application tracker: velocity, funnel by stage, weekly response rate, median time to first response, response rate by source.</figcaption>
+</figure>
 
 <h2>Where it came from</h2>
 <p>myKaria started as my own tool. I was applying for job after job in Germany, tailoring
@@ -95,8 +103,7 @@ always needs one more pass.</p>
 <h2>What this says about me as an engineer</h2>
 <p>I can take an ambiguous product idea to a running system: schema design, provider
 abstraction, prompt engineering with guardrails, billing, deployment, and the unglamorous
-parts such as retention jobs and idempotency. I know where AI belongs in a system, and
-where it does not.</p>
+parts such as retention jobs and idempotency.</p>
 
 <div class="foot">
   Product <a href="https://mykaria.com">mykaria.com</a> &nbsp;|&nbsp;

@@ -51,8 +51,9 @@ backed by 33 route modules and domain services with their own tests.
   OpenAI-compatible endpoint, with retry, fallback and per-call cost resolution
 - Multi-tenant SaaS mechanics: JWT auth with email verification, tier
   entitlements, Stripe billing, data isolation, GDPR retention and deletion jobs
-- Rendering pipeline: Handlebars templates to HTML to PDF through Puppeteer
-- Docker Compose environments and a Jenkins pipeline
+- Docker Compose environments, Jenkins pipeline, Nginx-backed deployment
+
+![Application tracker: velocity, funnel by stage, weekly response rate, median time to first response, response rate by source.](../assets/dashboard.jpg)
 
 ## Where it came from
 

@@ -71,6 +71,15 @@ appears as expert, an irrelevant skill never reaches the prompt, a truncated
 response never silently empties both skill lists) is enforced in code that can
 be tested, not in a sentence in the prompt.
 
+## Product surface
+
+Beyond document generation, myKaria tracks the search itself: application
+velocity over time, the funnel by pipeline stage, weekly response rate, median
+days to first response, and response rate by source. It is the feature I used
+most during my own search, which is why it exists at all.
+
+![Application dashboard](assets/dashboard.jpg)
+
 ## What is in this repository
 
 ```
