@@ -5,13 +5,14 @@ candidate's real level, not at the level of the job ad.
 
 Live product: [mykaria.com](https://mykaria.com)
 
-![myKaria landing page](assets/landing-page.png)
+![myKaria landing page](assets/landing-page.jpg)
 
 This repository is a curated public slice of a production SaaS I designed,
 built and operate. The full application is private. What is public here is the
 part worth reading: the prompt assembly layer, the skill-matching pipeline, the
 deterministic post-processing around the model, and the tests that pin all of it
-down.
+down. It began as my own tool during my own job search, and the constraints in
+the code come from using it on real applications.
 
 One-page write-up: [case study (PDF)](docs/case-study.pdf) | [case study (Markdown)](docs/case-study.md)
 

@@ -8,7 +8,8 @@ myKaria is a live SaaS that turns a job ad into a tailored CV and cover letter.
 I designed it, built it, and run it: database, backend, frontend, AI pipeline,
 billing, deployment. It is one repository, about 200 commits, 68 database
 migrations and 23 document templates, running in production at
-[mykaria.com](https://mykaria.com).
+[mykaria.com](https://mykaria.com). It began as my own tool during my own job
+search in Germany.
 
 ## The problem, stated precisely
 
@@ -53,16 +54,24 @@ backed by 33 route modules and domain services with their own tests.
 - Rendering pipeline: Handlebars templates to HTML to PDF through Puppeteer
 - Docker Compose environments and a Jenkins pipeline
 
-## What went right, and what I got wrong
+## Where it came from
 
-The engineering held: the pipeline is deterministic where it needs to be, and
-the tests caught real regressions in prompt assembly.
+myKaria started as my own tool. I was applying for job after job in Germany and
+tailoring every CV and cover letter by hand: reading the company, working out
+which of my skills genuinely mattered for that role, rewriting the same history
+twenty times. So I built the pipeline to do it for me.
 
-What I got wrong was sequencing. I built breadth, an admin console, a CMS, a
-translator, before proving that anyone could find the product. It is live and it
-has no meaningful traction, and the reason is distribution, not features. If I
-started again I would ship a single narrow flow to real users first and earn the
-right to build the rest.
+Then I used it on my own applications. Company research, honest skill matching,
+generated documents, section by section edits before sending. What survived that
+use is what shipped: anything that did not get me a better application out the
+door did not make it into the product. Once it was working reliably in my own
+workflow, making it available to other people was the obvious next step.
+
+That origin still explains the codebase. The honest skill tiers exist because I
+would not walk into an interview unable to defend a line on my own CV. The
+section editing exists because a generated document always needs one more pass.
+The gap framing exists because a missing requirement is a conversation I had to
+be ready for, not a word I could invent.
 
 ## What this says about me as an engineer
 

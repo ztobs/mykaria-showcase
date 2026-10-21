@@ -110,5 +110,6 @@ database, so a price change is data, not a deploy.
 - **Typed boundaries.** The backend is JavaScript. TypeScript at the service
   boundary between matching, prompt assembly and rendering would have caught
   several shape mismatches that instead became runtime errors.
-- **Ship the landing page before the admin console.** I built breadth first.
-  Distribution was, and is, the binding constraint, not features.
+- **Instrument the funnel earlier.** PostHog arrived after the core flow. Behaviour
+  data from week one would have shown which part of the pipeline to deepen and
+  which to leave alone.
