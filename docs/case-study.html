@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>myKaria case study - Oluwatobi Lukan</title>
+<style>
+  @page { size: A4; margin: 13mm 14mm 12mm 14mm; }
+  * { box-sizing: border-box; }
+  body {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.1pt;
+    line-height: 1.38;
+    color: #1a1a1a;
+    margin: 0;
+    max-width: 178mm;
+  }
+  h1 { font-size: 16pt; margin: 0 0 2mm 0; letter-spacing: -0.2pt; }
+  .sub { color: #555; font-size: 9pt; margin-bottom: 5mm; }
+  h2 {
+    font-size: 9pt; text-transform: uppercase; letter-spacing: 0.4pt;
+    color: #0f4c81; margin: 4.2mm 0 1.6mm 0; padding-bottom: 0.8mm;
+    border-bottom: 0.6pt solid #d5dde5;
+  }
+  p { margin: 0 0 2mm 0; }
+  ul { margin: 0 0 2.6mm 0; padding-left: 5mm; }
+  li { margin-bottom: 1mm; }
+  strong { font-weight: 600; }
+  .lead { font-size: 9.6pt; line-height: 1.42; }
+  .grid { display: block; }
+  .grid > div { flex: 1; }
+  .kicker { color: #0f4c81; font-weight: 600; }
+  .foot { margin-top: 4mm; padding-top: 2mm; border-top: 0.6pt solid #d5dde5; color: #666; font-size: 8.4pt; }
+  .foot a { color: #0f4c81; text-decoration: none; }
+  .muted { color: #555; }
+</style>
+</head>
+<body>
+
+<h1>myKaria: a production AI product built and run by one developer</h1>
+<div class="sub">Oluwatobi Lukan &nbsp;|&nbsp; Hamburg, Germany &nbsp;|&nbsp; Full-stack engineer, AI application pipelines</div>
+
+<p class="lead">myKaria turns a job ad into a tailored CV and cover letter that a candidate can
+actually defend in the interview. I designed it, built it and run it: database, backend,
+frontend, AI pipeline, billing and deployment. Around 200 commits, 68 migrations,
+23 document templates, live in production.</p>
+
+<h2>The problem, stated precisely</h2>
+<p>AI CV tools optimise for interview invitations, so they exaggerate. The candidate gets
+the interview and loses it, because the document claims things they cannot back up.
+Recruiters now discount generated CVs by default. So defensibility is not a writing
+problem, it is a ranking and policy problem: which skills genuinely match, at what level
+they can honestly be claimed, which ones to feature or omit, and how to cover missing
+requirements with real adjacent experience rather than invention.</p>
+
+<h2>Three decisions that shaped the build</h2>
+<ul>
+  <li><strong>One matching call, not three.</strong> The obvious pipeline is match, plan, write.
+  I collapsed it to a single indexed matching call whose result feeds both documents. That
+  removed a third of the latency and removed a class of bug where the CV and the letter
+  disagreed about the same skill.</li>
+  <li><strong>The model judges, the code enforces policy.</strong> Anything that must hold every
+  time, such as a beginner skill never appearing as expert, is implemented in tested code
+  rather than requested in a prompt. Truncated model output is treated as a correctness
+  failure, because an empty skill list used to let anything through.</li>
+  <li><strong>A modular monolith.</strong> At one developer, splitting services adds operational
+  cost and buys nothing. The useful boundaries are module boundaries: 33 route modules,
+  domain services, their own tests.</li>
+</ul>
+
+<h2>Evidence</h2>
+<div class="grid">
+  <div>
+    <ul>
+      <li>148 unit tests in the public slice covering prompt assembly and the matching
+      pipeline end to end, including failure paths</li>
+      <li>274 test and spec files across the full repository</li>
+      <li>Provider-agnostic LLM layer: OpenAI, Anthropic, Ollama, OpenRouter and any
+      OpenAI-compatible endpoint, with retry, fallback and per-call cost resolution</li>
+    </ul>
+  </div>
+  <div>
+    <ul>
+      <li>Multi-tenant mechanics: JWT auth with email verification, tier entitlements,
+      Stripe billing, data isolation, retention and deletion jobs</li>
+      <li>Rendering pipeline: Handlebars templates to HTML to PDF through Puppeteer</li>
+      <li>Docker Compose environments, Jenkins pipeline, Nginx-backed deployment</li>
+    </ul>
+  </div>
+</div>
+
+<h2>What went right, and what I got wrong</h2>
+<p>The engineering held. The pipeline is deterministic where it needs to be, and the tests
+caught real regressions in prompt assembly before users did.</p>
+<p>What I got wrong was sequencing. I built breadth, an admin console, a CMS, a translator,
+before proving anyone could find the product. It is live and it has no meaningful
+traction, and the reason is distribution, not features. Starting again, I would ship one
+narrow flow to real users first and earn the right to build the rest.</p>
+
+<h2>What this says about me as an engineer</h2>
+<p>I can take an ambiguous product idea to a running system: schema design, provider
+abstraction, prompt engineering with guardrails, billing, deployment, and the unglamorous
+parts such as retention jobs and idempotency. I know where AI belongs in a system, and
+more usefully, where it does not.</p>
+
+<div class="foot">
+  Product <a href="https://mykaria.com">mykaria.com</a> &nbsp;|&nbsp;
+  Code <a href="https://github.com/ztobs/mykaria-showcase">github.com/ztobs/mykaria-showcase</a> &nbsp;|&nbsp;
+  Architecture notes in <em>docs/architecture.md</em> &nbsp;|&nbsp; Contact: tobilukan@gmail.com
+</div>
+
+</body>
+</html>

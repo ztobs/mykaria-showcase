@@ -1,0 +1,13 @@
+{
+  "name": "mykaria-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Public code excerpts from myKaria, an AI job-application pipeline. Prompt assembly, skill matching and language detection, with their tests.",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}
